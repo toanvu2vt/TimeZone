@@ -1,0 +1,61 @@
+  <div class="header-area"  xmlns:th="http://www.thymeleaf.org">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="menu-wrapper">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a th:href="@{|/home/index|}"><img src="/assets/img/logo/logo.png" alt=""></a>
+                        </div>
+                        <!-- Main-menu -->
+                        <div class="main-menu d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                    <li><a th:href="@{|/home/index|}">Home</a></li>
+                                    <th:block th:if=${#request.remoteUser}>
+                                        <li><a th:href="@{|/home/shop|}">Shop</a></li>
+                                        <li class="hot"><a href="#">Latest</a>
+                                            <ul class="submenu">
+                                                <li><a th:href="@{|/home/order|}"> Order list</a></li>
+                                                <li><a th:href="@{|/home/detail|}"> Order Details</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Pages</a>
+                                            <ul class="submenu">
+                                                <li><a th:href="@{|/security/logoff|}">Logout</a></li>
+                                                <li><a th:href="@{|/home/cart|}">Cart</a></li>
+                                                <li><a th:href="@{|/home/checkout|}">Order Checkout</a></li>
+                                            </ul>
+                                        </li>
+                                    </th:block>
+                                    <th:block th:unless="${#request.remoteUser}">
+                                        <li><a th:href="@{|/home/shop|}">Shop</a></li>
+                                        <li><a th:href="@{|/security/login/form|}">Login</a></li>
+
+                                    </th:block>
+
+                                    <th:block th:if="${#request.isUserInRole('DIR') or #request.isUserInRole('STA') or #request.isUserInRole('AD')}">
+                                        <li><a th:href="@{|/home/admin/index|}">Administration</a></li>
+                                    </th:block>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Header Right -->
+                        <div class="header-right">
+                            <ul>
+                                <li>
+                                    <div class="nav-search search-switch">
+                                        <span class="flaticon-search"></span>
+                                    </div>
+                                </li>
+                                <li> <a th:href="@{|/home/login|}"><span class="flaticon-user"></span></a></li>
+                                <li class="hot"><a href="@{|/home/cart|}"><span class="flaticon-shopping-cart"></span></a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>

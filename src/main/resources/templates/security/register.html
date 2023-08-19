@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org" th:replace="~{/home/index :: dynamic(~{::main}) }">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Watch shop</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+
+
+<body>
+	<main>
+		<!-- Hero Area Start-->
+		<div class="slider-area ">
+			<div class="single-slider slider-height2 d-flex align-items-center">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12">
+							<div class="hero-cap text-center">
+								<h2>Register</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Hero Area End-->
+		<!--================login_part Area =================-->
+		<section class="login_part section_padding ">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-5 col-md-5">
+						<div class="login_part_text text-center">
+							<div class="login_part_text_iner">
+								<h2>New to our Shop?</h2>
+								<p>There are advances being made in science and technology
+									everyday, and a good example of this is the</p>
+								<a th:href="@{|/security/login/form|}" class="btn_3">Login</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-7 col-md-7">
+						<div class="login_part_form">
+							<div class="login_part_form_iner">
+								<h3>Welcome to TimeZone! <br>
+									Register</h3>
+								<form class="row contact_form" th:action="@{|/security/register|}" method="post"
+									novalidate="novalidate">
+									<h6 class="text-centert text-danger" th:text="${message}"></h6>
+									<div class="col-md-7 form-group p_star">
+										<input type="text" class="form-control" id="firstname" name="firstname" value=""
+											placeholder="Surname and middle name" th:field="*{account.firstname}">
+										<span th:if="${#fields.hasErrors('account.firstname')}"
+											th:errors="*{account.firstname}" class="text-centert text-danger"></span>
+									</div>
+									<div class="col-md-5 form-group p_star">
+										<input type="text" class="form-control" id="lastname" name="lastname" value=""
+											placeholder="Lastname" th:field="*{account.lastname}">
+										<span th:if="${#fields.hasErrors('account.lastname')}"
+											th:errors="*{account.lastname}" class="text-centert text-danger"></span>
+									</div>
+									<div class="col-md-12 form-group p_star">
+										<input type="text" class="form-control" id="username" name="username" value=""
+											placeholder="Username" th:field="*{account.username}">
+										<span th:if="${#fields.hasErrors('account.username')}"
+											th:errors="*{account.username}" class="text-centert text-danger"></span>
+									</div>
+									<div class="col-md-12 form-group p_star">
+										<input type="password" class="form-control" id="password" name="password"
+											value="" placeholder="Password" th:field="*{account.password}">
+										<span th:if="${#fields.hasErrors('account.password')}"
+											th:errors="*{account.password}" class="text-centert text-danger"></span>
+									</div>
+									<div class="col-md-12 form-group p_star">
+										<input type="password" class="form-control" id="password1" name="password1"
+											value="" placeholder="Confirm PassWord" >
+									</div>
+
+									<div class="col-md-12 form-group p_star">
+										<input type="email" class="form-control" id="email" name="email" value=""
+											placeholder="Email" th:field="*{account.email}">
+										<span th:if="${#fields.hasErrors('account.email')}" th:errors="*{account.email}"
+											class="text-centert text-danger"></span>
+									</div>
+									<div class="col-md-12 form-group p_star">
+										<div class="input-group">
+											<input type="tel" class="form-control" id="phone" name="phone"
+												placeholder="Phone" th:field="*{account.phone}" minlength="9" maxlength="10">
+											<span th:if="${#fields.hasErrors('account.phone')}"
+												th:errors="*{account.phone}" class="text-centert text-danger"></span>
+										</div>
+
+									</div>
+									<div class="col-md-12 form-group">
+										<button type="submit" value="submit" class="btn_3">
+											Register
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--================login_part end =================-->
+	</main>
+	<footer>
+		<!-- Footer Start-->
+		<div class="footer-area footer-padding">
+			<div class="container">
+				<div class="row d-flex justify-content-between">
+					<div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+						<div class="single-footer-caption mb-50">
+							<div class="single-footer-caption mb-30">
+								<!-- logo -->
+								<div class="footer-logo">
+									<a href="/home/index"><img src="/assets/img/logo/logo2_footer.png" alt=""></a>
+								</div>
+								<div class="footer-tittle">
+									<div class="footer-pera">
+										<p>Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do
+											eiusmod tem.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+						<div class="single-footer-caption mb-50">
+							<div class="footer-tittle">
+								<h4>Quick Links</h4>
+								<ul>
+									<li><a href="#">About</a></li>
+									<li><a href="#"> Offers & Discounts</a></li>
+									<li><a href="#"> Get Coupon</a></li>
+									<li><a href="#"> Contact Us</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
+						<div class="single-footer-caption mb-50">
+							<div class="footer-tittle">
+								<h4>New Products</h4>
+								<ul>
+									<li><a href="#">Woman Cloth</a></li>
+									<li><a href="#">Fashion Accessories</a></li>
+									<li><a href="#"> Man Accessories</a></li>
+									<li><a href="#"> Rubber made Toys</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+						<div class="single-footer-caption mb-50">
+							<div class="footer-tittle">
+								<h4>Support</h4>
+								<ul>
+									<li><a href="#">Frequently Asked Questions</a></li>
+									<li><a href="#">Terms & Conditions</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="#">Report a Payment Issue</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Footer End-->
+	</footer>
+	<!--? Search model Begin -->
+	<div class="search-model-box">
+		<div class="h-100 d-flex align-items-center justify-content-center">
+			<div class="search-close-btn">+</div>
+			<form class="search-model-form">
+				<input type="text" id="search-input" placeholder="Searching key.....">
+			</form>
+		</div>
+	</div>
+	<!-- Search model end -->
+
+</body>
+
+</html>

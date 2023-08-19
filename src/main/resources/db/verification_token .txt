@@ -1,0 +1,7 @@
+CREATE TABLE verification_token (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    token VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL,
+    expiry_date DATETIME NOT NULL,
+    FOREIGN KEY (username) REFERENCES account(username)
+);

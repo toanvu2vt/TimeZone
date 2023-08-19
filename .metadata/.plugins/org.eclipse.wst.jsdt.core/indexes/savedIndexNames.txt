@@ -1,0 +1,2 @@
+INDEX VERSION 1.4+D:\java6\Bainop\TimeZone\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1007340512.index

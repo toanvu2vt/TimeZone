@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" type="image/x-icon"
+	href="/assets/img/favicon.ico">
+	
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<!-- Boostrap -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+<!-- route -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<!-- jQuery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<!-- Angular -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<link rel="stylesheet" href="/assets/css/admin.css" type="text/css">
+<link rel="stylesheet" href="/assets/css/adminform.css" type="text/css">
+</head>
+<body ng-app="authority-app" ng-controller="authority-ctrl">
+
+	<div class="be-wrapper be-fixed-sidebar">
+			<nav class="navbar navbar-expand fixed-top be-top-header">
+			<div class="container-fluid">
+				<div class="be-navbar-header">
+					<!-- Logo -->
+					<div class="logo">
+						<a href="/home/main"><img src="/assets/img/logo/logo.png"
+							alt="" style="margin-left: 30px"></a>
+					</div>
+				</div>
+				<div class="page-title">
+					<span>Dashboard</span>
+				</div>
+				<h4>Welcom,[[${#request.remoteUser}]]</h4>
+				<div class="be-right-navbar">
+					<ul class="nav navbar-nav float-right be-user-nav">
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+							role="button" aria-expanded="false"><img
+								src="/assets/img/gallery/gallery5.jpg" alt="Avatar"><span
+								class="user-name">[[${#request.remoteUser}]]</span></a>
+							<div class="dropdown-menu" role="menu">
+								<div class="user-info">
+									<div class="user-name">[[${#request.remoteUser}]]</div>
+									<div class="user-position online">Available</div>
+								</div>
+								<a class="dropdown-item" href="/home/account"><span
+									class="icon mdi mdi-face"></span>Account</a><a
+									class="dropdown-item" href="/security/logoff"><span
+									class="icon mdi mdi-power"></span>Logout</a>
+							</div></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="be-left-sidebar">
+			<div class="left-sidebar-wrapper">
+				<a class="left-sidebar-toggle" href="#">Dashboard</a>
+				<div class="left-sidebar-spacer">
+					<div class="left-sidebar-scroll">
+						<div class="left-sidebar-content">
+							<ul class="sidebar-elements">
+								<li class="divider">Menu</li>
+								<li class="active"><a href="index"><i
+										class="icon mdi mdi-home"></i><span>Dashboard</span></a></li>
+										<th:block th:if="${#request.isUserInRole('DIR')}">
+											<li class="active"><a th:href="@{|/admin/authority|}"><i
+											class="icon mdi mdi-home"></i><span>Authority</span></a></li>
+										</th:block>
+										<li class="active"><a th:href="@{|/admin/orders|}"><i
+											class="icon mdi mdi-home"></i><span>Orders</span></a></li>
+										<li class="active"><a th:href="@{|/admin/statistical|}"><i
+											class="icon mdi mdi-home"></i><span>Statistical</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="be-content">
+		<div class="main-content container-fluid">
+			<div class="row	">
+				<div class="col-12 col-lg-12 ">
+					<div class="card card-table">
+						<div class="card-header">
+							<div class="title text-center" ><h2>ROLE CHANGE</h2></div>
+						</div>
+						<div class="card-body table-responsive">
+							<table class="table table-bordered ">
+								<thead class="bg-success"
+									style="font-family: 'Times New Roman', Times, serif;">
+									<tr>
+								
+										<th></th>
+										<th ng-repeat="role in roles" class="text-center">{{role.name}}</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="acc in admins">
+							
+										<td>{{acc.fullname}}</td>
+										<td ng-repeat="role in roles" class="text-center"><input
+											ng-checked="authority_of(acc,role)"
+											ng-click="authority_changed(acc,role)" type="checkbox">
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/app/js/authority-ctrl.js"></script>
+</body>
+</html>

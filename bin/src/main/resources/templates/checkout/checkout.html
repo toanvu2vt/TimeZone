@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org" th:replace="~{/home/index :: dynamic(~{::main}) }">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Watch shop</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+</head>
+
+<body>
+
+  <main>
+    <!-- Hero Area Start-->
+    <div class="slider-area ">
+      <div class="single-slider slider-height2 d-flex align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="hero-cap text-center">
+                <h2>Checkout</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--================Checkout Area =================-->
+    <section class="checkout_area section_padding">
+      <div class="container">
+     
+      
+        <div class="billing_details">
+          <div class="row">
+            <div class="col-lg-8">
+              <h3>Billing Details</h3>
+              <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                <div class="col-md-6 form-group p_star">
+                  <input type="text" class="form-control" id="first" name="name" disabled/>
+                  <span class="placeholder" data-placeholder="Name"> [[${#request.remoteUser}]]</span>
+                </div>
+                <div class="col-md-6 form-group p_star">
+                  <input type="text" class="form-control" id="date" name="date" disabled/>
+                  <span class="placeholder" data-placeholder="Create Date"> {{order.createDate | date:'dd-MMM-yyyy'}}</span>
+                </div>
+            
+                <div class="col-md-12 form-group">
+                  <div class="creat_account">
+                    <h3>Shipping Details</h3>
+                  </div>
+                  <textarea ng-model="order.address"class="form-control" name="message" id="message" rows="1"
+                    placeholder="Order Notes"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-4">
+              <div class="order_box">
+                <h2>Your Order</h2>
+                <ul class="list">
+                  <li>
+                    <a href="#">Product
+                      <span>Total</span>
+                    </a>
+                  </li>
+                 
+              
+                  <li ng-repeat="item in cart.items">
+                    <a href="#">{{item.name}}
+                      <span class="middle text-center">{{item.qty}}</span>
+                      <span class="last">{{item.qty * item.price | number: 2}}</span>
+                    </a>
+                  </li>
+                </ul>
+                <ul class="list list_2">
+                
+                  <li>
+                    <a href="#">Total
+                      <span>{{cart.amount | number : 2}}</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="payment_item">
+                  <div class="radion_btn">
+                    <input type="radio" id="f-option5" name="selector" />
+                    <label for="f-option5">Check payments</label>
+                    <div class="check"></div>
+                  </div>
+                  <p>
+                    Please check your order
+                  </p>
+                </div>
+                <div class="payment_item active">
+                  <div class="radion_btn">
+                    <input type="radio" id="f-option6" name="selector" />
+                    <label for="f-option6">Paypal </label>
+                    <img src="img/product/single-product/card.jpg" alt="" />
+                    <div class="check"></div>
+                  </div>
+                  <p>
+                    Please check your order
+                  </p>
+                </div>
+                <div class="creat_account">
+                  <input type="checkbox" id="f-option4" name="selector" />
+                  <label for="f-option4">I’ve read and accept the </label>
+                  <a href="#">terms & conditions*</a>
+                </div>
+                <button class="btn_3" ng-click="order.purchase()">Proceed to Paypal</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Checkout Area =================-->
+  </main>
+  <footer>
+    <!-- Footer Start-->
+    <div class="footer-area footer-padding">
+      <div class="container">
+        <div class="row d-flex justify-content-between">
+          <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+            <div class="single-footer-caption mb-50">
+              <div class="single-footer-caption mb-30">
+                <!-- logo -->
+                <div class="footer-logo">
+                  <a href="/home/index"><img src="/assets/img/logo/logo2_footer.png" alt=""></a>
+                </div>
+                <div class="footer-tittle">
+                  <div class="footer-pera">
+                    <p>Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do eiusmod tem.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+            <div class="single-footer-caption mb-50">
+              <div class="footer-tittle">
+                <h4>Quick Links</h4>
+                <ul>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#"> Offers & Discounts</a></li>
+                  <li><a href="#"> Get Coupon</a></li>
+                  <li><a href="#"> Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
+            <div class="single-footer-caption mb-50">
+              <div class="footer-tittle">
+                <h4>New Products</h4>
+                <ul>
+                  <li><a href="#">Woman Cloth</a></li>
+                  <li><a href="#">Fashion Accessories</a></li>
+                  <li><a href="#"> Man Accessories</a></li>
+                  <li><a href="#"> Rubber made Toys</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+            <div class="single-footer-caption mb-50">
+              <div class="footer-tittle">
+                <h4>Support</h4>
+                <ul>
+                  <li><a href="#">Frequently Asked Questions</a></li>
+                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Report a Payment Issue</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End-->
+  </footer>
+  <!--? Search model Begin -->
+  <div class="search-model-box">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+      <div class="search-close-btn">+</div>
+      <form class="search-model-form">
+        <input type="text" id="search-input" placeholder="Searching key.....">
+      </form>
+    </div>
+  </div>
+  <!-- Search model end -->
+
+</body>
+
+</html>

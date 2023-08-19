@@ -1,0 +1,234 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org" th:replace="~{/home/index :: dynamic(~{::main}) }">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Watch shop</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+</head>
+
+<body>
+    <!--? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="/assets/img/logo/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <main>
+        <!-- Hero Area Start-->
+        <div class="slider-area ">
+            <div class="single-slider slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center">
+                                <h2>Watch Shop</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero Area End-->
+        <!-- Latest Products Start -->
+        <section class="popular-items latest-padding">
+            <div class="container">
+                <div class="row product-btn justify-content-between mb-40">
+                    <div class="properties__button">
+                        <!--Nav Button  -->
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                                    role="tab" aria-controls="nav-home" aria-selected="true">All Product</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" th:href="@{|/home/shop/sortByPrice|}">
+                                    Price high to low</a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" th:href="@{|/home/shop/sortByName|}">
+                                    A->Z </a>
+                            </div>
+                        </nav>
+                        <!--End Nav Button  -->
+                    </div>
+                    <!-- Grid and List view -->
+                    <div class="grid-list-view">
+						<form th:action="@{|/home/shop/findByName|}" method="get">
+							<div class="grid-list-view">
+								<input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search"
+									th:value="${keywords}">
+							</div>
+							
+						</form>
+                    </div>
+                    <!-- Select items -->
+					<div class="dropdown">
+						<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							Category
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+							<a class="dropdown-item"  th:each="cate:${cates}" th:href="@{|/category/list?cid=${cate.id}|}">[[${cate.name}]]</a>
+						</div>
+					</div>
+                </div>
+                <!-- Nav Card -->
+                <div class="tab-content" id="nav-tabContent">
+                    <!-- card one -->
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="row">
+
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6" th:each="a:${items}">
+                                <div class="single-popular-items mb-50 text-center">
+                                    <div class="popular-img">
+                                        <a th:href="@{|/home/shop/detail/${a.id}|}">
+                                            <img th:src="@{|/assets/img/gallery/${a.image}|}" alt="">
+                                        </a>
+                                        <div class="favorit-items">
+                                            <span class="flaticon-heart"></span>
+                                        </div>
+                                    </div>
+                                    <div class="popular-caption">
+                                        <h3><a th:href="@{|product/detail/${a.id}|}" th:text="${a.name}"></a></h3>
+                                        <span>[[${#numbers.formatDecimal(a.price,2,'COMMA',0,'POINT')}]] VND</span>
+                                        <button class="btn btn-outline-primary" th:attr="ng-click=@{|cart.add(${a.id})|}">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End Nav Card -->
+            </div>
+        </section>
+        <!-- Latest Products End -->
+        <!--? Shop Method Start-->
+        <div class="shop-method-area">
+            <div class="container">
+                <div class="method-wrapper">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="single-method mb-40">
+                                <i class="ti-package"></i>
+                                <h6>Free Shipping Method</h6>
+                                <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="single-method mb-40">
+                                <i class="ti-unlock"></i>
+                                <h6>Secure Payment System</h6>
+                                <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="single-method mb-40">
+                                <i class="ti-reload"></i>
+                                <h6>Secure Payment System</h6>
+                                <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Shop Method End-->
+    </main>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <!-- logo -->
+                                <div class="footer-logo">
+                                    <a href="/home/index"><img src="/assets/img/logo/logo2_footer.png" alt=""></a>
+                                </div>
+                                <div class="footer-tittle">
+                                    <div class="footer-pera">
+                                        <p>Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do
+                                            eiusmod tem.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Quick Links</h4>
+                                <ul>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#"> Offers & Discounts</a></li>
+                                    <li><a href="#"> Get Coupon</a></li>
+                                    <li><a href="#"> Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>New Products</h4>
+                                <ul>
+                                    <li><a href="#">Woman Cloth</a></li>
+                                    <li><a href="#">Fashion Accessories</a></li>
+                                    <li><a href="#"> Man Accessories</a></li>
+                                    <li><a href="#"> Rubber made Toys</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Support</h4>
+                                <ul>
+                                    <li><a href="#">Frequently Asked Questions</a></li>
+                                    <li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Report a Payment Issue</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+    <!--? Search model Begin -->
+    <div class="search-model-box">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-btn">+</div>
+            <form class="search-model-form" method="post" action="/home/shop/findByName">
+                <input type="text" id="search-input" name="keyword" placeholder="Searching key.....">
+            </form>
+        </div>
+        <button class="btn-3">SUBMIT</button>
+    </div>
+    <!-- Search model end -->
+    <script th:inline="javascript">
+        document.getElementById("select1").addEventListener("change", function() {
+            var selectedOption = this.options[this.selectedIndex];
+            var link = selectedOption.value;
+            if (link) {
+                window.location.href = link;
+            }
+        });
+    </script>
+</body>
+
+</html>

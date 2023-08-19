@@ -1,0 +1,176 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org" th:replace="~{/home/index :: dynamic(~{::main}) }">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Watch shop</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+</head>
+
+<body >
+    <main>
+        <!-- Hero Area Start-->
+        <div class="slider-area ">
+            <div class="single-slider slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center">
+                                <h2>Your Order</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero Area End-->
+        <!-- Latest Products Start -->
+        <section class="popular-items latest-padding">
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th>No</th>
+                                    <th>Order no</th>
+                                    <th>Order Date</th>
+                                    <th>Shipping Address</th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr th:each="order,state:${orders}" >
+                                    <td>[[${state.index}]]</td>
+                                    <td>[[${order.id}]]</td>
+                                    <td>[[${order.createDate}]]</td>
+                                    <td>[[${order.address}]]</td>
+                                    <td>
+                                        <a th:href="@{|/order/detail/${order.id}|}" class="btn btn-outline-primary">DETAIL</a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                
+                        </div>
+                        </div>
+                  </div>
+             </div>
+        </section>
+        <!-- Latest Products End -->
+        <!--? Shop Method Start-->
+        <div class="shop-method-area">
+            <div class="container">
+                <div class="method-wrapper">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="single-method mb-40">
+                                <i class="ti-package"></i>
+                                <h6>Free Shipping Method</h6>
+                                <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="single-method mb-40">
+                                <i class="ti-unlock"></i>
+                                <h6>Secure Payment System</h6>
+                                <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="single-method mb-40">
+                                <i class="ti-reload"></i>
+                                <h6>Secure Payment System</h6>
+                                <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Shop Method End-->
+    </main>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <!-- logo -->
+                                <div class="footer-logo">
+                                    <a href="/home/index"><img src="/assets/img/logo/logo2_footer.png" alt=""></a>
+                                </div>
+                                <div class="footer-tittle">
+                                    <div class="footer-pera">
+                                        <p>Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do
+                                            eiusmod tem.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Quick Links</h4>
+                                <ul>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#"> Offers & Discounts</a></li>
+                                    <li><a href="#"> Get Coupon</a></li>
+                                    <li><a href="#"> Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>New Products</h4>
+                                <ul>
+                                    <li><a href="#">Woman Cloth</a></li>
+                                    <li><a href="#">Fashion Accessories</a></li>
+                                    <li><a href="#"> Man Accessories</a></li>
+                                    <li><a href="#"> Rubber made Toys</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Support</h4>
+                                <ul>
+                                    <li><a href="#">Frequently Asked Questions</a></li>
+                                    <li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Report a Payment Issue</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+    <!--? Search model Begin -->
+    <div class="search-model-box">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-btn">+</div>
+            <form class="search-model-form" method="post" action="/home/shop/findByName">
+                <input type="text" id="search-input" name="keyword" placeholder="Searching key.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+
+</body>
+
+</html>

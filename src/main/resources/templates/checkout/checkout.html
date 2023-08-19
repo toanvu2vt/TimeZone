@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org" th:replace="~{/home/index :: dynamic(~{::main}) }">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Watch shop</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+</head>
+
+<body>
+
+  <main>
+    <!-- Hero Area Start-->
+    <div class="slider-area ">
+      <div class="single-slider slider-height2 d-flex align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="hero-cap text-center">
+                <h2>Checkout</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--================Checkout Area =================-->
+    <section class="checkout_area section_padding">
+      <div class="container">
+     
+      
+        <div class="billing_details">
+          <div class="row">
+            <div class="col-lg-8">
+              <h3>Billing Details</h3>
+              <form class="row contact_form" action="#" method="post" novalidate="novalidate" name="formCheckOut">
+                <div class="col-md-6 form-group p_star">
+                  <div class="form-control">[[${#request.remoteUser}]]</div>
+                  <span class="placeholder" data-placeholder=""></span>
+                </div>
+
+                <div class="col-md-6 form-group p_star">
+                  <div type="text" class="form-control" id="date" name="date">
+                    <span class="placeholder" data-placeholder=""></span>
+                    {{order.createDate | date:'yyyy-MM-dd'}}
+                  </div>
+                </div>
+                <div class="col-md-12 form-group">
+                  <div class="creat_account">
+                    <h3>Shipping Details</h3>
+                  </div>
+
+                  <div class="errortext" ng-show="formCheckOut.house.$dirty && formCheckOut.house.$invalid" style="float: left; margin-right: 40px; color:red">
+                    <span ng-show="formCheckOut.house.$error.required">House is required</span> 
+                  </div>
+                  <input type="text" class="form-control" name="house" ng-model="house" ng-change="updateAddress()" placeholder="House Number, Street" required>
+                  
+                  
+                  <div class="errortext" ng-show="formCheckOut.district.$dirty && formCheckOut.district.$invalid" style="float: left; margin-right: 40px; color:red">
+                    <span ng-show="formCheckOut.district.$error.required">District is required</span> 
+                  </div>
+                  <input type="text" class="form-control my-4" name="district" ng-model="district" ng-change="updateAddress()" placeholder="District" required>
+                  
+                  <div class="errortext" ng-show="formCheckOut.city.$dirty && formCheckOut.city.$invalid" style="float: left; margin-right: 40px; color:red">
+                    <span ng-show="formCheckOut.city.$error.required">City is required</span> 
+                  </div>
+                  <input type="text" class="form-control" name="city"  ng-model="city" ng-change="updateAddress()" placeholder="City" required>
+                  
+                   <span style="color:red" class="text-center" ng-show="formCheckOut.message.$dirty && formCheckOut.message.$invalid">
+                   <span class="text-center" ng-show="formCheckOut.message.$error.required">Address is required</span>
+                  </span>
+                  <textarea ng-model="order.address"class="form-control" name="message" id="message" rows="1"
+                    placeholder="Order Notes" readonly>
+                    {{ house || '' }} {{ district || '' }} {{ city || '' }}
+                  </textarea>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-4">
+              <div class="order_box">
+                <h2>Your Order</h2>
+                <ul class="list">
+                  <li>
+                    <a href="#">Name
+                      <span>Price</span>
+                    </a>
+                  </li>
+                 
+              
+                  <li ng-repeat="item in cart.items">
+                    <a href="#">{{item.name}}
+                      <span class="last">{{item.qty * item.price | number: 0}} VND</span>
+                    </a>
+                  </li>
+                </ul>
+                <ul class="list list_2">
+                
+                  <li>
+                    <a href="#">Total
+                      <span>{{cart.amount | number : 0}} VND</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="row">
+                    <button class="btn_3 col-md-12" ng-click="order.purchase()" ng-disabled="formCheckOut.$invalid || isDisabled ">CAST</button>
+                  </div> 
+                  <div class="row">
+                    <a th:href="@{/pay}" ng-click="order.purchase()" class="btn_3 my-2 col-md-12" ng-disabled="formCheckOut.$invalid || isDisabled ">VN PAY</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Checkout Area =================-->
+  </main>
+  <footer>
+    <!-- Footer Start-->
+    <div class="footer-area footer-padding">
+      <div class="container">
+        <div class="row d-flex justify-content-between">
+          <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+            <div class="single-footer-caption mb-50">
+              <div class="single-footer-caption mb-30">
+                <!-- logo -->
+                <div class="footer-logo">
+                  <a href="/home/index"><img src="/assets/img/logo/logo2_footer.png" alt=""></a>
+                </div>
+                <div class="footer-tittle">
+                  <div class="footer-pera">
+                    <p>Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do eiusmod tem.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+            <div class="single-footer-caption mb-50">
+              <div class="footer-tittle">
+                <h4>Quick Links</h4>
+                <ul>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#"> Offers & Discounts</a></li>
+                  <li><a href="#"> Get Coupon</a></li>
+                  <li><a href="#"> Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
+            <div class="single-footer-caption mb-50">
+              <div class="footer-tittle">
+                <h4>New Products</h4>
+                <ul>
+                  <li><a href="#">Woman Cloth</a></li>
+                  <li><a href="#">Fashion Accessories</a></li>
+                  <li><a href="#"> Man Accessories</a></li>
+                  <li><a href="#"> Rubber made Toys</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+            <div class="single-footer-caption mb-50">
+              <div class="footer-tittle">
+                <h4>Support</h4>
+                <ul>
+                  <li><a href="#">Frequently Asked Questions</a></li>
+                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Report a Payment Issue</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End-->
+  </footer>
+  <!--? Search model Begin -->
+  <div class="search-model-box">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+      <div class="search-close-btn">+</div>
+      <form class="search-model-form">
+        <input type="text" id="search-input" placeholder="Searching key.....">
+      </form>
+    </div>
+  </div>
+  <!-- Search model end -->
+
+</body>
+
+</html>
